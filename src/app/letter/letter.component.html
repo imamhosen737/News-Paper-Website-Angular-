@@ -1,0 +1,48 @@
+
+<div class="container">
+    <div class="row">
+    <div class="col-md-12">
+    <div class="panel panel-default" style="padding: 15px;border-width: 5px;border-color: #c6c6c7; ">
+    <div class="panel-body">
+    <div class="row">
+    
+    <!-- <form method="post" action="https://shampratikdeshkal.com/sendbox/store" enctype="multipart/form-data"> -->
+    <input type="hidden" name="_token" value="clDgmIHkvvpPVewWiU4ZWg4iQdnVM0z0MfVPEJK1">
+    <p style="font-weight: bold;font-size: 20px;text-align: left;color: #516FC2;margin-top: 0px" class="">আপনার কথা লিখুন</p>
+    <p style="text-align: left;font-size: 18px;line-height: 22px;background-color: #EBEBEB;padding: 5px;border-left: 3px solid #516FC2;color: black">আপনার লেখা পাঠাতে নিচের তথ্যঘরগুলো পূরণ করুন। যেকোনো লেখা প্রকাশে সাম্প্রতিক দেশকালের নীতি অনুসরণ করা হবে। সিদ্ধান্ত আপনাকে জানানো হবে।</p>
+    <p style="margin-top: 20px;text-align: left;margin-bottom: 0px;">বিষয় *</p>
+    <input value="" name="complaint" class="form-control" type="text" placeholder="" required="" style="border-radius: 0;height: 34px;width: 100%;" [(ngModel)]="subject">
+    <p style="margin-top: 20px;text-align: left;margin-bottom: 0px;">লেখা *</p>
+    <textarea class="form-control" name="complaint_body" style="width: 100%;" rows="10" placeholder="" required="" [(ngModel)]="content"></textarea>
+    <!-- <p style="margin-top: 20px;text-align: left;margin-bottom: 0px;">ছবি (যদি থাকে)</p> -->
+    <div style="width: 100%;overflow-y: scroll;">
+    <table>
+    <tbody>
+        <!-- <tr>
+    <td><input type="file" name="image[]" class="form-control"></td>
+    <td><input type="file" name="image[]" class="form-control"></td>
+    <td><input type="file" name="image[]" class="form-control"></td>
+    </tr> -->
+    </tbody></table>
+    </div>
+    <!-- <p style="margin-top: 20px;text-align: left;margin-bottom: 0px;">ভিডিও লিঙ্ক (যদি থাকে)</p>
+    <input class="form-control" name="complaint_video" style="width: 100%;" value="" placeholder=""> -->
+    <hr>
+    <p style="font-size: 20px;text-align: left;color: #516FC2;margin-top: 30px">প্রেরণকারীর তথ্য</p>
+    <p style="margin-top: 0px;text-align: left;margin-bottom: 0px;">নাম *</p>
+    <input value="" name="complainer_name" class="form-control" type="text" placeholder="" style="border-radius: 0;height: 34px;width: 100%;" required="" [(ngModel)]="name">
+    <p style="margin-top: 20px;text-align: left;margin-bottom: 0px;">মোবাইল *</p>
+    <input value="" name="complainer_number" class="form-control" type="text" placeholder="" style="border-radius: 0;height: 34px;width: 100%;" required="" [(ngModel)]="mobile">
+    <p style="margin-top: 20px;text-align: left;margin-bottom: 0px;">ইমেইল *</p>
+    <input value="" name="complainer_email" class="form-control" type="text" placeholder="" style="border-radius: 0;height: 34px;width: 100%;" required="" [(ngModel)]="email">
+    <p style="margin-top: 20px;text-align: left;margin-bottom: 0px;">ঠিকানা *</p>
+    <textarea class="form-control" name="complainer_address" style="width: 100%;" rows="4" required="" [(ngModel)]="address"></textarea>
+    <!-- <div style="margin-top: 20px;" class="g-recaptcha" data-sitekey="6LczzWcaAAAAAD_JY3sNWYi1KdCLRCXOatMN40H5"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LczzWcaAAAAAD_JY3sNWYi1KdCLRCXOatMN40H5&amp;co=aHR0cHM6Ly9zaGFtcHJhdGlrZGVzaGthbC5jb206NDQz&amp;hl=en&amp;v=JF4U2g-hvLrBJ_UxdbKj92gN&amp;size=normal&amp;cb=pkadj433sl20" width="304" height="78" role="presentation" name="a-2rgndc8ixn6e" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div> -->
+    <button type="submit" class="btn btn-info btn-block" style="border-radius: 0;height: 34px;width: 100%;margin-top: 20px;background-color: #516FC2;border:none;color: white;cursor: pointer;" (click)="saveData()">পাঠান</button>
+    <!-- </form> -->
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>

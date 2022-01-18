@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Newspaper</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <style type="text/css">
+    .modal-open .modal {
+      display: flex !important;
+      height: 100%;
+    } 
+  
+    .modal-open .modal .modal-dialog {
+      margin: auto;
+    }
+  </style>
+  
+  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/customa0cc.css?v=1.30">
+  
+  <link rel="stylesheet" href="assets/sidebarMenu/style3.css">
+  <link rel="stylesheet" href="assets/sidebarMenu/jquery.mCustomScrollbar.min.css">
+  <style type="text/css">
+        @media (min-width: 1200px){
+        .container {
+          width: 1260px;
+        }
+      }
+      
+      .topSearchBar input[type=search] {
+        border: solid 0px #ccc;
+        padding: 10px 10px 9px 15px;
+        width: 100%;
+        background: #555;
+      }
+      .topSearchBar input[type=search]:focus {
+        width: 300px;
+        background-color: #ccc;
+        border-color: #333;
+        border: solid 0px #fff;
+      }
+  
+      .topSocialIconColored .fa-facebook{
+        background-color: #3b5998;
+        color: white;
+        border: none;
+      }
+      .topSocialIconColored .fa-facebook:hover{
+        color: white;
+      }
+      .topSocialIconColored .fa-twitter{
+        background-color: #1da1f2;
+        color: white;
+        border: none;
+      }
+      .topSocialIconColored .fa-twitter:hover{
+        color: white;
+      }
+      .topSocialIconColored .fa-instagram{
+        background-color: #c32aa3;
+        color: white;
+        border: none;
+      }
+      .topSocialIconColored .fa-instagram:hover{
+        color: white;
+      }
+      .topSocialIconColored .fa-youtube{
+        background-color: #ff0000;
+        color: white;
+        border: none;
+      }
+      .topSocialIconColored .fa-youtube:hover{
+        color: white;
+      }
+    </style>
+  
+</head>
+<body>
+
+  <app-root></app-root>
+</body>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="assets/js/jQuery.loadScroll.js"></script>
+
+<script type="text/javascript">
+		$(document).ready(function () { 
+			$('img').loadScroll();
+		});
+	</script>
+
+<script src="assets/sidebarMenu/popper.min.js"></script>
+<script src="assets/sidebarMenu/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript">
+		$(document).ready(function () {
+			$("#sidebar").mCustomScrollbar({
+				theme: "minimal"
+			});
+
+			$('#dismiss, .overlay').on('click', function () {
+				$('#sidebar').removeClass('active');
+				$('.overlay').removeClass('active');
+			});
+
+			$('#sidebarCollapse').on('click', function () {
+				$('#sidebar').addClass('active');
+				$('.overlay').addClass('active');
+				$('.collapse.in').toggleClass('in');
+				$('a[aria-expanded=true]').attr('aria-expanded', 'false');
+			});
+		});
+	</script>
+
+<script type="text/javascript">
+		$(document).ready(function () { 
+			$('.stickyDivBottomClose').click(function(){
+				$('.stickyDivBottom').hide();
+				$('.stickyDivBottom').removeClass('stickyDivBottom');
+			});
+		});
+	</script>
+
+<script type="text/javascript">
+		var site_url = $('.site_url').val();
+		var url = site_url+'/ajax/get/menubar-categories';
+		$.get(url, function(data){
+			$.each(data, function(key, value){
+				var row = $('<div class="text-left col-md-3 allMegaMenuItem"><a href="'+site_url+'/'+value.title+'" class="colorBlackHoverBlueImp">'+value.display_name+'</a></div>');
+				$('#ajaxMenubarCategories').append(row);
+				$('.loaderDiv').hide();
+				$('.ajaxMenubarCategoriesWidget').show();
+
+				var rowSmall = $('<li class="list-group-item" style="background-color: unset !important;border:none !important;"><a style="border-bottom: 1px solid #8c7f7f;font-size: 16px;color: white" href="'+site_url+'/'+value.title+'">'+value.display_name+'</a></li>');
+				$('#ajaxMenubarCategoriesSmall').append(rowSmall);
+
+			});
+		});
+	</script>
+<script type="text/javascript">
+
+		// mega menu toggle
+		$('.openMegaMenu').hide();
+		$('.closeOpenedMenu').hide();
+		$('.allMenuOpen').click(function(){
+			$('.openMegaMenu').toggle(200);
+			$('.closeOpenedMenu').toggle();
+			$('.enterOpenedMenu').toggle();
+			$('.allMenu').toggleClass('openAllMenuColor');
+		})
+
+		// scrolled search toggle
+		$('.openScrolledSearch').hide();
+		$('.scrollSearchOpen').click(function(){
+			$('.openScrolledSearch').toggle();
+			$('.scrollSearchOpen').toggleClass('openAllMenuColor');
+		});
+		$('.closeSearchButton').click(function(){
+			$('.openScrolledSearch').toggle();
+			$('.scrollSearchOpen').toggleClass('openAllMenuColor');
+		})
+
+		// scrolled topbar show
+		$(document).scroll(function() {
+			var y = $(this).scrollTop();
+			if (y > 175) {
+				$('.scrolledTopMenuBar').addClass("navbar-fixed-top");
+				$('.scrolledTopMenuBarColor').removeClass("bgColorWhite");
+				$('.scrolledTopMenuBarColor').addClass("bgBrandColor");
+				$('.headerMenu').addClass("headerMenuBrand");
+				$('.headerMenu').removeClass("headerMenu");
+				$('.scrolledLogo').addClass("displayBlock");
+				$('.scrolledLogo').removeClass("displayNone");
+				$('.englishLinkBorder').addClass("englishLinkBorderLite");
+				$('.englishLinkBorder').removeClass("englishLinkBorder");
+			} else {
+				$('.scrolledTopMenuBar').removeClass("navbar-fixed-top");
+				$('.scrolledTopMenuBarColor').removeClass("bgBrandColor");
+				$('.scrolledTopMenuBarColor').addClass("bgColorWhite");
+				$('.headerMenuBrand').addClass("headerMenu");
+				$('.headerMenuBrand').removeClass("headerMenuBrand");
+				$('.scrolledLogo').removeClass("displayBlock");
+				$('.scrolledLogo').addClass("displayNone");
+				$('.openScrolledSearch').hide();
+				$('.englishLinkBorderLite').addClass("englishLinkBorder");
+				$('.englishLinkBorderLite').removeClass("englishLinkBorderLite");
+			}
+		});
+
+		// bell button tooltip
+		$(document).ready(function(){
+			$('[data-toggle="tooltip"]').tooltip(); 
+		});
+
+		// scrollToTop
+		$(document).scroll(function() {
+			var s = $(this).scrollTop();
+			if (s > 175) {
+				$('.scrollToTop').show();
+			} else {
+				$('.scrollToTop').hide();
+			}
+		});
+		$('.scrollToTop').click(function(){
+			$('body,html').animate({
+				scrollTop: 0
+			}, 600);
+			return false;
+		})
+	</script>
+
+<script type="text/javascript">
+		var paginationNext = $('.pagination li:last-child a').text('»');
+		var paginationNext = $('.pagination li:last-child span').text('»');
+		var paginationPrev = $('.pagination li:first-child a').text('«');
+		var paginationPrev = $('.pagination li:first-child span').text('«');
+	</script>
+
+<script type="text/javascript">
+		var width = $(window).width();
+		if (width > 768) {
+			$('.bottomAd').show();
+			$('.closeBottomAd').click(function(){
+				$('.bottomAd').hide();
+			});
+		}else{
+			$('.bottomAdMobile').show();
+			$('.closeBottomAd').click(function(){
+				$('.bottomAdMobile').hide();
+			});
+		}
+	</script>
+<script type="text/javascript">
+		var width = $(window).width();
+		if (width > 768) {
+			$('.visible-xs').empty();
+			$('.xs-visible').empty();
+		}
+		if (width < 768) {
+			$('.hidden-xs').empty();
+		}
+	</script>
+
+
+
+<script type="text/javascript">
+	$(window).load(function() {
+		var width = $(window).width();
+		if (width > 768) {
+			var frontLeftDiv = $('.frontLeftDiv').height();
+			var frontRightDiv = $('.frontRightDiv').height();
+			var facebookDivAppendHeight = (frontLeftDiv-frontRightDiv)-32;
+			$('.facebookDivAppendHeight').height(facebookDivAppendHeight);
+		}
+	});
+</script>
+
+
+<script type="text/javascript">
+	jQuery(function(){
+		var poll_id = $('#poll_id').val();
+		var voted_data = sessionStorage.getItem('vote');
+		if(voted_data == poll_id){
+			$('.poll_body_left').hide();
+			$('.voted_success').show();
+		}
+		jQuery('.voteNow').click(function(){
+			var voted_data = sessionStorage.getItem('vote');
+			if(voted_data == poll_id ){
+				alert('আপনার ভোট প্রদান সম্পন্ন হয়েছে');
+			}else{
+				var id = jQuery('.pollAnswer:checked').data('id');
+				var vote = jQuery('.pollAnswer:checked').val();
+				var site_url = jQuery('.site_url').val();
+				if(id){
+					var request_url = site_url+'/home/poll/'+id+'/'+vote;
+					jQuery.ajax({
+						url: request_url,
+						type: "get",
+						success:function(data){
+							$('#poll_form input[name=user_answer]').prop('checked', false);
+							sessionStorage.vote = id;
+							window.open(site_url+'/poll', '_blank');
+							$('.poll_body_left').hide();
+							$('.voted_success').show();
+						}
+					});
+				}
+			}
+		});
+	});
+</script>
+
+<script type="text/javascript" src="assets/breakingnews/breakingNews.js"></script>
+<script type="text/javascript">
+	$(window).load(function(e) {
+		$("#bn1").breakingNews({
+			effect		:"slide-h",
+			autoplay	:true,
+			timer		:3000,
+			color		:"#B30F0F"
+		});
+		$("#bn2").breakingNews({
+			effect		:"slide-h",
+			autoplay	:true,
+			timer		:3000,
+			color		:"#B30F0F"
+		});
+	});
+</script>
+<script type="text/javascript">
+// 	$(window).load(function() {
+// 		$('#newYearModal').modal('show');
+// 		setTimeout(function(){
+// 			$('#newYearModal').modal('hide');
+// 		}, 4000);
+// 	});
+</script>
+
+</html>
